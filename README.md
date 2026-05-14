@@ -11,7 +11,7 @@ Simple macro tool which fetches boring stuff like mouse pos or pixel color
 ## Dependencies
 * Python
 * customtkinter
-
+* keyboard
 ## Installing
 Just install the python file and you're done!
 
