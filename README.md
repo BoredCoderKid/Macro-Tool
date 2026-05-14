@@ -1,5 +1,7 @@
 # Macro Tool
-
+this is a small program i wanted to make to help
+people who are trying to make a macro, contributions
+from better or more experienced coders are very much appreciated
 ## Description
 Simple macro tool which fetches boring stuff like mouse pos or pixel color
 ## Dependencies
