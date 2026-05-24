@@ -3,7 +3,7 @@ this is a small program i wanted to make to help
 people who are trying to make a macro, contributions
 from better or more experienced coders are very much appreciated
 ## Description
-Simple macro tool which fetches boring stuff like mouse pos or pixel color
+Simple macro tool which fetches boring stuff like mouse pos or pixel color and data saving
 **Hotkeys**: 
 * ctrl+1 = position of mouse
 * ctrl+2 = color of pixel on mouse
