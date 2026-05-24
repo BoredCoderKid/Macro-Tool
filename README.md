@@ -4,7 +4,8 @@ people who are trying to make a macro, contributions
 from better or more experienced coders are very much appreciated
 ## Description
 Simple macro tool which fetches boring stuff like mouse pos or pixel color and data saving
-**Hotkeys**: 
+
+## Hotkeys: 
 * ctrl+1 = position of mouse
 * ctrl+2 = color of pixel on mouse
 * ctrl+3 = Data saving of position & color on mouse
