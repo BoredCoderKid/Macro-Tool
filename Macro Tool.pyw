@@ -27,8 +27,7 @@ def trigger_position_mouse():
     if bool_mouse == False:
         window.after(2500, position_mouse)
 
-button_mouse_xy = ct.CTkButton(window, width=10, height=30, corner_radius=5, text="Mouse Tracker", border_width=1, border_color="#000000")
-button_mouse_xy.bind("<Button-1>", lambda track: trigger_position_mouse())
+button_mouse_xy = ct.CTkButton(window, width=10, height=30, corner_radius=5, text="Mouse Tracker", border_width=1, border_color="#000000", command=trigger_position_mouse)
 button_mouse_xy.place(x=25, y=50)
 
 location_text = ct.CTkLabel(window, width=0, height=0, bg_color="#242424", text=f"Location: Not Checked")
@@ -61,7 +60,6 @@ button_color.place(x=200, y=50)
 color_text = ct.CTkLabel(window, width=0, height=0, bg_color="#242424", text=f"Color: Not Checked")
 color_text.place(x=200, y=25)
 
-
 my_canvas  = ct.CTkCanvas(window, width=30, height=20, bg="#242424", highlightthickness=0)
 my_canvas.place(x=285, y=40) 
 color_box = my_canvas.create_aa_circle(x_pos=10, y_pos=10, radius=10, fill='red')
@@ -75,7 +73,7 @@ want_more_info.bind("<Button-1>", lambda info: py.mouseInfo())
 
 #Record UI & Functions
 record_bool = True
-times = 1
+times = 0
 
 def save_data():
     global record_bool, times, pathb, config_path
@@ -106,12 +104,20 @@ def record_bool():
         record_bool = False
         click_record()
 
-click_recorder = ct.CTkButton(window, width=10, height=30, corner_radius=5, text="Click Recorder", border_width=1, border_color="#000000")
-click_recorder.bind("<Button-1>", lambda click: click_record())
+click_recorder = ct.CTkButton(window, width=10, height=30, corner_radius=5, text="Click Recorder", border_width=1, border_color="#000000", command=click_record)
 click_recorder.place(x=25, y=115)
 
 clicks_recorded = ct.CTkLabel(window, width=5, height=15, corner_radius=5, text="Recorded: No Clicks")
 clicks_recorded.place(x=15, y=90)
+
+#---------------------------------------------------------------------------------------------------------------------------------------------
+
+def fetch_data_file():
+    global config_path
+    os.startfile(config_path)
+
+fetch_data_button = ct.CTkButton(window, width=10, height=20, corner_radius=5, text="Open file", border_width=1, border_color="#000000", command=fetch_data_file, fg_color="#CA0000", hover_color="#8A0000")
+fetch_data_button.place(x=40, y=150)
 
 #Hotkeys
 ky.add_hotkey("ctrl+1", position_mouse)
