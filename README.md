@@ -2,6 +2,7 @@
 this is a small program i wanted to make to help
 people who are trying to make a macro, contributions
 from better or more experienced coders are very much appreciated
+
 ## Description
 Simple macro tool which fetches boring stuff like mouse pos or pixel color and data saving
 
@@ -9,10 +10,12 @@ Simple macro tool which fetches boring stuff like mouse pos or pixel color and d
 * ctrl+1 = position of mouse
 * ctrl+2 = color of pixel on mouse
 * ctrl+3 = Data saving of position & color on mouse
+
 ## Dependencies
 * Python
 * customtkinter
 * keyboard
+
 ## Installing
 Just install the python file and you're done!
 
@@ -20,6 +23,7 @@ Just install the python file and you're done!
 Run the program using the `.pyw` Python file.
 
 ## Version History
+* **V0.4**: Tweaked open button and added delete file button.
 * **V0.3**: Added open button to make the user have a better experrience and optimized code.
 * **V0.2**: Fixed data saving, added hotkeys.
 * **V0.1**: Release of tool, please comment what i should add.
