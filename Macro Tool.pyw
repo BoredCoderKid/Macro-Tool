@@ -4,7 +4,7 @@ import keyboard as ky
 import os
 
 window = ct.CTk()
-window.geometry("400x300")
+window.geometry("325x300")
 window.title("Helpful Macro Tool")
 window.resizable(width=False, height=False)
 
@@ -112,12 +112,29 @@ clicks_recorded.place(x=15, y=90)
 
 #---------------------------------------------------------------------------------------------------------------------------------------------
 
+#Opener
+
 def fetch_data_file():
     global config_path
-    os.startfile(config_path)
+    try:
+        os.startfile(config_path)
+    except Exception as error:
+        print("An error has occured!:   ", error)
 
-fetch_data_button = ct.CTkButton(window, width=10, height=20, corner_radius=5, text="Open file", border_width=1, border_color="#000000", command=fetch_data_file, fg_color="#CA0000", hover_color="#8A0000")
-fetch_data_button.place(x=40, y=150)
+fetch_data_button = ct.CTkButton(window, width=0, height=20, corner_radius=5, text="Open file", border_width=1, border_color="#000000", command=fetch_data_file, fg_color="#07CA00", hover_color="#058A00")
+fetch_data_button.place(x=5, y=150)
+
+#Deleter
+
+def fetch_file_delete():
+    global config_path
+    try:
+        os.remove(config_path)
+    except Exception as error:
+        print("An error has occured!:   ", error)
+
+fetch_file_delete = ct.CTkButton(window, width=0, height=20, corner_radius=5, text="Delete file", border_width=1, border_color="#000000", command=fetch_file_delete, fg_color="#CA0000", hover_color="#8A0000")
+fetch_file_delete.place(x=75, y=150)
 
 #Hotkeys
 ky.add_hotkey("ctrl+1", position_mouse)
