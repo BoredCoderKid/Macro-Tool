@@ -23,6 +23,7 @@ Just install the python file and you're done!
 Run the program using the `.pyw` Python file.
 
 ## Version History
+* **V0.5**: Tweaked open & delete button, added new Keybinds feature and made a customizable hotkey ui
 * **V0.4**: Tweaked open button, added delete file button and made program slimmer.
 * **V0.3**: Added open button to make the user have a better experrience and optimized code.
 * **V0.2**: Fixed data saving, added hotkeys.
