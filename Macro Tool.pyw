@@ -6,7 +6,7 @@ import os
 window = ct.CTk()
 window.geometry("325x300")
 window.title("Helpful Macro Tool")
-window.resizable(width=False, height=False)
+window.resizable(False, False)
 
 pathb = os.path.dirname(os.path.abspath(__file__))
 config_path = os.path.join(pathb, "RecordedClicksData(Macro Tool).txt")
@@ -112,7 +112,7 @@ clicks_recorded.place(x=15, y=90)
 
 #---------------------------------------------------------------------------------------------------------------------------------------------
 
-#Opener
+#Opener UI
 
 def fetch_data_file():
     global config_path
@@ -122,9 +122,9 @@ def fetch_data_file():
         print("An error has occured!:   ", error)
 
 fetch_data_button = ct.CTkButton(window, width=0, height=20, corner_radius=5, text="Open file", border_width=1, border_color="#000000", command=fetch_data_file, fg_color="#07CA00", hover_color="#058A00")
-fetch_data_button.place(x=5, y=150)
+fetch_data_button.place(x=38.5, y=175)
 
-#Deleter
+#Deleter UI
 
 def fetch_file_delete():
     global config_path
@@ -134,11 +134,115 @@ def fetch_file_delete():
         print("An error has occured!:   ", error)
 
 fetch_file_delete = ct.CTkButton(window, width=0, height=20, corner_radius=5, text="Delete file", border_width=1, border_color="#000000", command=fetch_file_delete, fg_color="#CA0000", hover_color="#8A0000")
-fetch_file_delete.place(x=75, y=150)
+fetch_file_delete.place(x=35, y=150)
+
+#---------------------------------------------------------------------------------------------------------------------------------------------
+
+#Keybinds UI
+
+import tkinter as tk
+from tkinter import ttk
+
+tkinter_bool = False
+
+#Keybind 1 set
+keybind1_label = None
+keybind1_button = None
+
+#Keybind 2 set
+keybind2_label = None
+keybind2_button = None
+
+#Keybind 3 set
+keybind3_label = None
+keybind3_button = None
+
+#Save button
+save_keybinds = None
+
+def read_hotkeys():
+    global keybind1, keybind2, keybind3, hotkey1_position, hotkey2_color, hotkey3_data
+    try:
+        hotkey1_position = ky.remove_hotkey(hotkey1_position)
+        hotkey2_color = ky.remove_hotkey(hotkey2_color)
+        hotkey3_data = ky.remove_hotkey(hotkey3_data)
+
+        new_keybind1 = keybind1_button.get()
+        new_keybind2 = keybind2_button.get()
+        new_keybind3 = keybind3_button.get()
+
+        if new_keybind1 == None or "" or new_keybind2 == None or "" or new_keybind3 == None or "":
+            print("Invalid hotkey")
+            new_keybind1 = "ctrl+1"
+            new_keybind2 = "ctrl+2"
+            new_keybind3 = "ctrl+3"
+        else:
+            keybind1 = new_keybind1
+            keybind2 = new_keybind2
+            keybind3 = new_keybind3
+
+            hotkey1_position = ky.add_hotkey(keybind1, position_mouse)
+            hotkey2_color = ky.add_hotkey(keybind2, color_track)
+            hotkey3_data = ky.add_hotkey(keybind3, save_data)
+
+    except Exception as error:
+        print(f"Error while trying to set hotkey or remove hotkey: {error}")
+
+def keybinds_open():
+    global tkinter_bool, keybind1_label, keybind1_button, keybind2_label, keybind2_button, keybind3_label, keybind3_button, save_keybinds
+    try:
+        root = tk.Tk()
+        root.geometry("200x150")
+        root.title("Keybinds")
+        root.resizable(False, False)
+
+        #-------- UI --------
+        #TitlE
+        tkinter_title = tk.Label(root, width=20, height=1, text="KeyBinds", font="fredoka")
+        tkinter_title.place(x=0, y=5)
+
+        #Keybind 1
+        keybind1_label = tk.Label(root, width=10, height=2, text="Keybind 1")
+        keybind1_label.place(x=10, y=25)
+
+        keybind1_button = ttk.Entry(root, width=10)
+        keybind1_button.place(x=92.5, y=31)
+
+        #Keybind 2
+        keybind2_label = tk.Label(root, width=10, height=2, text="Keybind 2")
+        keybind2_label.place(x=10, y=50)
+
+        keybind2_button = ttk.Entry(root, width=10)
+        keybind2_button.place(x=92.5, y=56)
+
+        #Keybind 3
+        keybind3_label = tk.Label(root, width=10, height=2, text="Keybind 3")
+        keybind3_label.place(x=10, y=75)
+
+        keybind3_button = ttk.Entry(root, width=10)
+        keybind3_button.place(x=92.5, y=81)
+
+        #Save button
+        save_keybinds = ttk.Button(root, width=10, text="Save", command=read_hotkeys)
+        save_keybinds.place(x=58, y=125)
+
+        root.mainloop()
+
+    except Exception as error:
+        print("Error setting up 2nd ui:     ", error)
+
+#Keybind UI Opener
+Keybind_ui_opener = ct.CTkLabel(window, width=0, height=10, corner_radius=5, text="Keybinds", bg_color="#242424")
+Keybind_ui_opener.place(x=175, y=280)
+Keybind_ui_opener.bind("<Button-1>", lambda open: keybinds_open())
 
 #Hotkeys
-ky.add_hotkey("ctrl+1", position_mouse)
-ky.add_hotkey("ctrl+2", color_track)
-ky.add_hotkey("ctrl+3", save_data)
+keybind1 = "ctrl+1"
+keybind2 = "ctrl+2"
+keybind3 = "ctrl+3"
+
+hotkey1_position = ky.add_hotkey(keybind1, position_mouse)
+hotkey2_color = ky.add_hotkey(keybind2, color_track)
+hotkey3_data = ky.add_hotkey(keybind3, save_data)
 
 window.mainloop()
