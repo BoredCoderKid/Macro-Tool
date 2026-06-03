@@ -18,6 +18,8 @@ Simple macro tool which fetches boring stuff like mouse pos or pixel color and d
 
 ## Installing
 Just install the python file and you're done!
+Or run this command: pip install customtkinter keyboard pyautogui pillow
+
 
 ## How to run the program
 Run the program using the `.pyw` Python file.
